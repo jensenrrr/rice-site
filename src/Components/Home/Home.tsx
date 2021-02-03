@@ -1,10 +1,12 @@
 import React from "react";
+import TestSVG from "../TestSVG";
 import HomeComputer from "./HomeComputer";
 
 const Home = () => {
   return (
     <div>
-      <HomeComputer />
+      <TestSVG />
+      {/*<HomeComputer />*/}
     </div>
   );
 };

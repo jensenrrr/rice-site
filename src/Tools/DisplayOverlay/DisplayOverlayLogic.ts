@@ -1,7 +1,6 @@
-import DisplayOverlay from "./DisplayOverlay";
+import { CSSProperties } from "react";
 import {
   AbsolutePositionAndSize,
-  DisplayOverlayInput,
   OverlaidImageData,
   OverlaidImageInput,
   RelativePositionAndSize,
@@ -29,7 +28,8 @@ export const overlaidImagesReducer = (
 
   state.forEach((overlayImage) => {
     newState.push({
-      img: overlayImage.img,
+      render: overlayImage.render,
+      imgProps: overlayImage.imgProps,
       relativePositionAndSize: overlayImage.relativePositionAndSize,
       absolutePositionAndSize: determineAbsolutePosition(
         action,
@@ -52,11 +52,32 @@ export const initImageState = (
   const initialImageState: OverlaidImageData[] = [];
   for (let info of imagesInfo) {
     const imageInfo: OverlaidImageData = {
-      img: info.img,
+      render: info.render,
+      imgProps: info.imgProps,
       relativePositionAndSize: info.relativePositionAndSize,
       absolutePositionAndSize: initialAbsolute,
     };
     initialImageState.push(imageInfo);
   }
   return initialImageState;
+};
+
+export const absolutePositionAndSizeToCSS = (
+  absolutePositionAndSize: AbsolutePositionAndSize
+): CSSProperties => {
+  return {
+    position: "absolute",
+    top: formatToPixels(
+      absolutePositionAndSize?.top ? absolutePositionAndSize?.top : 0
+    ),
+    left: formatToPixels(
+      absolutePositionAndSize?.left ? absolutePositionAndSize?.left : 0
+    ),
+    width: formatToPixels(
+      absolutePositionAndSize?.width ? absolutePositionAndSize?.width : 0
+    ),
+    height: formatToPixels(
+      absolutePositionAndSize?.height ? absolutePositionAndSize?.height : 0
+    ),
+  };
 };
