@@ -1,4 +1,3 @@
-import { relative } from "path";
 import React, {
   useState,
   useRef,
@@ -16,10 +15,11 @@ import {
   OverlaidImageInput,
   ResizeAction,
 } from "./OverlayTypes";
+import { VerticalCutOutput, getVerticalMargin } from "./VerticalCrop";
 
 interface BackgroundInput {
   backgroundImage: string;
-  backgroundVideo: string;
+  backgroundVideo?: string;
   onBackgroundLoad: () => void;
 }
 const Background = ({
@@ -28,7 +28,9 @@ const Background = ({
   onBackgroundLoad,
 }: BackgroundInput) => {
   return backgroundVideo ? (
-    <div style={{ position: "relative", paddingTop: "56.25%" }}>
+    <div
+      style={{ position: "relative", paddingTop: "56.25%", maxHeight: "2000" }}
+    >
       <ReactPlayer
         url={"videos/SandbookHighBitRate.mp4"}
         muted
@@ -53,7 +55,13 @@ const Background = ({
 const DisplayOverlay: FC<DisplayOverlayInput> = ({
   backgroundImage,
   backgroundVideo,
-  backgroundSize = { width: true, scale: 100 },
+  backgroundScale = {
+    width: 1920,
+    height: 1080,
+    heightTrim: 0,
+    cutTop: false,
+    cutBottom: false,
+  },
   overlaidImages,
 }: DisplayOverlayInput) => {
   const [overlaidImagesState, overlaidImagesDispatch] = useReducer<
@@ -66,24 +74,48 @@ const DisplayOverlay: FC<DisplayOverlayInput> = ({
     height: 0,
   });
 
+  const [verticalMargin, setVerticalMargin] = useState<VerticalCutOutput>({
+    topCut: 0,
+    styles: {},
+  });
+
   const onBackgroundLoad = () => {
     setCurrentBackgroundSize({
-      height: window.innerWidth * 0.5625, // 1080 / 1920
+      height:
+        window.innerWidth *
+        (backgroundScale.height && backgroundScale.width
+          ? backgroundScale.height / backgroundScale.width
+          : 1),
       width: window.innerWidth,
     });
   };
 
   useEffect(() => {
+    const newVerticalMargin = getVerticalMargin({
+      cutTop: backgroundScale.cutTop,
+      cutBottom: backgroundScale.cutBottom,
+      maxHeightCutOff: backgroundScale.heightTrim,
+      backgroundHeight: currentBackgroundSize.height,
+      windowHeight: window.innerHeight,
+    });
+
+    setVerticalMargin(newVerticalMargin);
+
     overlaidImagesDispatch({
+      verticalMargin: newVerticalMargin.topCut,
       backgroundHeight: currentBackgroundSize.height,
       backgroundWidth: currentBackgroundSize.width,
     });
-  }, [currentBackgroundSize, overlaidImagesDispatch]);
+  }, [currentBackgroundSize, setVerticalMargin, overlaidImagesDispatch]);
 
   useEffect(() => {
     function resizedBackground() {
       setCurrentBackgroundSize({
-        height: window.innerWidth * 0.5625, // 1080 / 1920
+        height:
+          window.innerWidth *
+          (backgroundScale.height && backgroundScale.width
+            ? backgroundScale.height / backgroundScale.width
+            : 1),
         width: window.innerWidth,
       });
     }
@@ -92,7 +124,7 @@ const DisplayOverlay: FC<DisplayOverlayInput> = ({
   });
 
   return (
-    <div>
+    <div style={verticalMargin.styles}>
       <Background
         backgroundImage={backgroundImage}
         backgroundVideo={backgroundVideo}

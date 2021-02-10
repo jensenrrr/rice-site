@@ -7,14 +7,14 @@ import {
   ResizeAction,
 } from "./OverlayTypes";
 
-export const formatToPixels = (pos: number) => {
+export const formatToPixels = (pos: number): string => {
   return `${Math.round(pos).toString()}px`;
 };
 export const determineAbsolutePosition = (
   size: ResizeAction,
   relativePositionAndSize: RelativePositionAndSize
 ): AbsolutePositionAndSize => ({
-  top: size.backgroundHeight * relativePositionAndSize.yRelative,
+  top: (size.backgroundHeight * relativePositionAndSize.yRelative) - size.verticalMargin,
   left: size.backgroundWidth * relativePositionAndSize.xRelative,
   width: size.backgroundWidth * relativePositionAndSize.widthScale,
   height: size.backgroundHeight * relativePositionAndSize.heightScale,

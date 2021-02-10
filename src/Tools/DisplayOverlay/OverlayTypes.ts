@@ -19,19 +19,16 @@ export interface AbsolutePositionAndSize {
 }
 export interface DisplayOverlayInput {
   readonly backgroundImage: string;
-  readonly backgroundVideo: string;
-  readonly backgroundSize: BackgroundSize;
+  readonly backgroundVideo?: string;
+  readonly backgroundScale?: BackgroundScale;
   readonly overlaidImages: readonly OverlaidImageInput[];
 }
-/*
-export interface DisplayOverlayInfo {
-  readonly backgroundImage: string;
-  readonly backgroundSize: BackgroundSize;
-  readonly overlaidImages: readonly OverlaidImageData[];
-}*/
-export interface BackgroundSize {
-  width: boolean;
-  scale: number;
+export interface BackgroundScale {
+  width?: number;
+  height?: number;
+  heightTrim?: number;
+  cutTop?: boolean;
+  cutBottom?: boolean;
 }
 export interface OverlaidImageInput {
   readonly render: any;
@@ -51,28 +48,7 @@ export interface RelativePositionAndSize {
   heightScale: number;
 }
 export interface ResizeAction {
+  verticalMargin: number;
   backgroundHeight: number;
   backgroundWidth: number;
 }
-
-/*interface DisplayOverlayInfo {
-  backgroundImage: backgroundImage;
-  overlayImages: OverlayImage[];
-}
-interface backgroundImage {
-  image: string;
-  width: number;
-  height: number;
-}
-interface OverlayImage {
-  image: string;
-  relativePosition: relativePosition;
-  absolutePosition: absolutePosition;
-}
-
-interface relativePosition {
-  yRelative: number;
-  xRelative: number;
-  widthScale: number;
-  heightScale: number;
-}*/

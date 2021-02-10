@@ -11,7 +11,13 @@ const HomeComputer = () => {
       <DisplayOverlay
         backgroundImage={pic}
         backgroundVideo={vid}
-        backgroundSize={{ width: true, scale: 100 }}
+        backgroundScale={{
+          width: 1920,
+          height: 1080,
+          heightTrim: 0.14,
+          cutTop: true,
+          cutBottom: false,
+        }}
         overlaidImages={[mail, terminal]}
       />
     </div>
