@@ -3,15 +3,14 @@ import HomeComputer from "./HomeComputer";
 import { ReferenceQuotes } from "./ReferenceQuotes";
 import PersonalProjects from "./PersonalProjects";
 import WorkHistory from "./WorkHistory";
-
-const Footer = () => {
-  return <div className="bg-yellow-200 min-w-full h-40 mt-10"></div>;
-};
+import Footer from "../Footer";
+import Welcome from "./Welcome";
 
 const Home = () => {
   return (
     <div className="w-full">
       <HomeComputer />
+      <Welcome />
       <PersonalProjects />
       <ReferenceQuotes />
       <WorkHistory />

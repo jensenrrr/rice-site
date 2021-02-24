@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import waves from "../Assets/waveHeader.png";
 
 const HeaderLink = ({ to, classes, title }: any) => {
   return (
@@ -12,35 +13,30 @@ const Header = () => {
   let location = useLocation();
 
   return location.pathname !== "/" ? (
-    <div className="h-12 flex flex-row w-full justify-start bg-blue-50">
-      <HeaderLink
-        to="/"
-        classes="bg-blue-100 font-semibold h-full px-5"
-        title="Home"
-      />
-      <HeaderLink
-        to="/Blog"
-        classes="bg-blue-200 font-semibold h-full px-5"
-        title="Blog"
-      />
+    <div
+      style={{ backgroundImage: `url(${waves})`, backgroundRepeat: "repeat" }}
+      className="h-10 flex flex-row w-full justify-start"
+    >
+      <HeaderLink to="/" classes="font-semibold h-full px-5" title="Home" />
+      <HeaderLink to="/Blog" classes="font-semibold h-full px-5" title="Blog" />
       <HeaderLink
         to="/Writing"
-        classes="bg-blue-300 font-semibold h-full px-5"
+        classes="font-semibold h-full px-5"
         title="Writing"
       />
       <HeaderLink
-        to="/Project"
-        classes="bg-blue-400 font-semibold h-full px-5"
-        title="Project"
+        to="/Projects"
+        classes="font-semibold h-full px-5"
+        title="Projects"
       />
       <HeaderLink
         to="/Resume"
-        classes="bg-blue-500 font-semibold h-full px-5"
+        classes="font-semibold h-full px-5"
         title="Resume"
       />
       <HeaderLink
         to="/Contact"
-        classes="bg-blue-600 font-semibold h-full px-5"
+        classes="font-semibold h-full px-5"
         title="Contact"
       />
     </div>
