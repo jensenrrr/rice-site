@@ -6,7 +6,7 @@ import React, {
   FC,
   Reducer,
 } from "react";
-import ReactPlayer from "react-player";
+import Background from "./Background";
 import { initImageState, overlaidImagesReducer } from "./DisplayOverlayLogic";
 import { OverlayImages } from "./OverlayImage";
 import {
@@ -16,41 +16,6 @@ import {
   ResizeAction,
 } from "./OverlayTypes";
 import { VerticalCutOutput, getVerticalMargin } from "./VerticalCrop";
-
-interface BackgroundInput {
-  backgroundImage: string;
-  backgroundVideo?: string;
-  onBackgroundLoad: () => void;
-}
-const Background = ({
-  backgroundImage,
-  backgroundVideo,
-  onBackgroundLoad,
-}: BackgroundInput) => {
-  return backgroundVideo ? (
-    <div
-      style={{ position: "relative", paddingTop: "56.25%", maxHeight: "2000" }}
-    >
-      <ReactPlayer
-        url={"videos/SandbookHighBitRate.mp4"}
-        muted
-        playing
-        loop
-        width="100%"
-        height="100%"
-        onStart={onBackgroundLoad}
-        style={{ position: "absolute", top: 0, left: 0 }}
-      />
-    </div>
-  ) : (
-    <img
-      src={backgroundImage}
-      onLoad={onBackgroundLoad}
-      style={{ position: "relative", width: "100%" }}
-      alt={"Well this doesn't look too good."}
-    />
-  );
-};
 
 const DisplayOverlay: FC<DisplayOverlayInput> = ({
   backgroundImage,
@@ -62,12 +27,15 @@ const DisplayOverlay: FC<DisplayOverlayInput> = ({
     cutTop: false,
     cutBottom: false,
   },
+  globalProps,
   overlaidImages,
 }: DisplayOverlayInput) => {
   const [overlaidImagesState, overlaidImagesDispatch] = useReducer<
     Reducer<readonly OverlaidImageData[], ResizeAction>,
     readonly OverlaidImageInput[]
   >(overlaidImagesReducer, overlaidImages, initImageState);
+
+  const backgroundRef = useRef<HTMLDivElement>(null);
 
   const [currentBackgroundSize, setCurrentBackgroundSize] = useState({
     width: 0,
@@ -79,15 +47,20 @@ const DisplayOverlay: FC<DisplayOverlayInput> = ({
     styles: {},
   });
 
+  function resizedBackground() {
+    if (backgroundRef && backgroundRef.current) {
+      setCurrentBackgroundSize({
+        height:
+          backgroundRef.current.offsetWidth *
+          (backgroundScale.height && backgroundScale.width
+            ? backgroundScale.height / backgroundScale.width
+            : 1),
+        width: backgroundRef.current.offsetWidth,
+      });
+    }
+  }
   const onBackgroundLoad = () => {
-    setCurrentBackgroundSize({
-      height:
-        window.innerWidth *
-        (backgroundScale.height && backgroundScale.width
-          ? backgroundScale.height / backgroundScale.width
-          : 1),
-      width: window.innerWidth,
-    });
+    resizedBackground();
   };
 
   useEffect(() => {
@@ -109,16 +82,6 @@ const DisplayOverlay: FC<DisplayOverlayInput> = ({
   }, [currentBackgroundSize, setVerticalMargin, overlaidImagesDispatch]);
 
   useEffect(() => {
-    function resizedBackground() {
-      setCurrentBackgroundSize({
-        height:
-          window.innerWidth *
-          (backgroundScale.height && backgroundScale.width
-            ? backgroundScale.height / backgroundScale.width
-            : 1),
-        width: window.innerWidth,
-      });
-    }
     window.addEventListener("resize", resizedBackground);
     return () => window.removeEventListener("resize", resizedBackground);
   });
@@ -128,9 +91,10 @@ const DisplayOverlay: FC<DisplayOverlayInput> = ({
       <Background
         backgroundImage={backgroundImage}
         backgroundVideo={backgroundVideo}
+        backgroundRef={backgroundRef}
         onBackgroundLoad={onBackgroundLoad}
       />
-      {OverlayImages(overlaidImagesState)}
+      {OverlayImages(overlaidImagesState, globalProps)}
     </div>
   );
 };

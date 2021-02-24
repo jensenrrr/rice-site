@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="184" height="124" fill="none" viewBox="0 0 184 124">
+  <g class="Terminal">
+    <path fill="#C4C4C4" d="M3.16 13.678L176.993 3.032l4 106.5-174.5 10.5L3.16 13.678z" class="boxFill"/>
+    <path fill="#000" fill-opacity=".35" fill-rule="evenodd" d="M179.343 1.518c.4.363.636.872.655 1.412l3.75 107.382a2 2 0 01-1.878 2.066L6.29 122.989a2.002 2.002 0 01-2.12-1.927L.438 14.178a2 2 0 011.872-2.066L177.873 1.004a2.003 2.003 0 011.47.514zM4.503 15.982l3.593 102.89 171.587-10.369-3.61-103.377L4.503 15.982z" class="boxStroke" clip-rule="evenodd"/>
+    <g class="TerminalShapes">
+      <path fill="#000" fill-opacity=".35" fill-rule="evenodd" d="M150.931 94a2 2 0 01-1.81 2.173l-46.845 4.26a2 2 0 01-.362-3.984l46.845-4.26a2 2 0 012.172 1.81z" class="line" clip-rule="evenodd"/>
+      <path fill="#000" fill-opacity=".35" fill-rule="evenodd" d="M40.372 33.176a2 2 0 012.79-.465l41.113 29.361-35.798 42.155a2 2 0 01-3.049-2.59L78.41 62.799 40.838 35.966a2 2 0 01-.466-2.79z" class="arrow" clip-rule="evenodd"/>
+    </g>
+  </g>
+</svg>

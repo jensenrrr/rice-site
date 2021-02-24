@@ -14,7 +14,9 @@ export const determineAbsolutePosition = (
   size: ResizeAction,
   relativePositionAndSize: RelativePositionAndSize
 ): AbsolutePositionAndSize => ({
-  top: (size.backgroundHeight * relativePositionAndSize.yRelative) - size.verticalMargin,
+  top:
+    size.backgroundHeight * relativePositionAndSize.yRelative -
+    size.verticalMargin,
   left: size.backgroundWidth * relativePositionAndSize.xRelative,
   width: size.backgroundWidth * relativePositionAndSize.widthScale,
   height: size.backgroundHeight * relativePositionAndSize.heightScale,
@@ -78,6 +80,20 @@ export const absolutePositionAndSizeToCSS = (
     ),
     height: formatToPixels(
       absolutePositionAndSize?.height ? absolutePositionAndSize?.height : 0
+    ),
+  };
+};
+
+export const absolutePositionToCSS = (
+  absolutePositionAndSize: AbsolutePositionAndSize
+): CSSProperties => {
+  return {
+    position: "absolute",
+    top: formatToPixels(
+      absolutePositionAndSize?.top ? absolutePositionAndSize?.top : 0
+    ),
+    left: formatToPixels(
+      absolutePositionAndSize?.left ? absolutePositionAndSize?.left : 0
     ),
   };
 };

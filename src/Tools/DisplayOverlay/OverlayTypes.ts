@@ -2,13 +2,12 @@ import { CSSProperties, FC } from "react";
 
 export interface OverlayImageRenderProps {
   img: string;
-  hoverImg: string;
-  hoverAdjust: RelativePositionAndSize;
+  globalProps: any;
   absolutePositionAndSize: AbsolutePositionAndSize;
 }
 export interface OverlayImageInstance {
   render: any;
-  imgProps: any;
+  globalProps: any;
   absolutePositionAndSize?: AbsolutePositionAndSize;
 }
 export interface AbsolutePositionAndSize {
@@ -21,6 +20,7 @@ export interface DisplayOverlayInput {
   readonly backgroundImage: string;
   readonly backgroundVideo?: string;
   readonly backgroundScale?: BackgroundScale;
+  readonly globalProps?: any;
   readonly overlaidImages: readonly OverlaidImageInput[];
 }
 export interface BackgroundScale {
@@ -32,7 +32,7 @@ export interface BackgroundScale {
 }
 export interface OverlaidImageInput {
   readonly render: any;
-  readonly imgProps: any;
+  readonly imgProps?: any;
   readonly relativePositionAndSize: RelativePositionAndSize;
 }
 export interface OverlaidImageData {
