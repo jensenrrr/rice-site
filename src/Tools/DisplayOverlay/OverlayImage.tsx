@@ -1,16 +1,14 @@
-import React, { CSSProperties } from "react";
-import {
-  AbsolutePositionAndSize,
-  OverlaidImageData,
-  OverlayImageInstance,
-} from "./OverlayTypes";
-import { formatToPixels } from "./DisplayOverlayLogic";
+import React from "react";
+import { OverlaidImageData, OverlayImageInstance } from "./OverlayTypes";
 
-export const OverlayImages = (overlayImages: readonly OverlaidImageData[]) =>
+export const OverlayImages = (
+  overlayImages: readonly OverlaidImageData[],
+  globalProps: any
+) =>
   overlayImages.map((overlaidImage, i) => (
     <OverlayImage
       render={overlaidImage.render}
-      imgProps={overlaidImage.imgProps}
+      globalProps={globalProps}
       absolutePositionAndSize={overlaidImage.absolutePositionAndSize}
       key={"overlay" + i}
     />
@@ -18,8 +16,8 @@ export const OverlayImages = (overlayImages: readonly OverlaidImageData[]) =>
 
 export const OverlayImage = ({
   render,
-  imgProps,
+  globalProps,
   absolutePositionAndSize,
 }: OverlayImageInstance) => {
-  return render({ absolutePositionAndSize, ...imgProps });
+  return render({ absolutePositionAndSize, globalProps });
 };

@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import pic from "../../Assets/HomeComputerCropped.jpg";
 import DisplayOverlay from "../../Tools/DisplayOverlay/DisplayOverlay";
-import { mail, terminal } from "./OverlayImagesInput";
+import { OverlaidImageInput } from "../../Tools/DisplayOverlay/OverlayTypes";
+import { sandbookOverlaidImages } from "./OverlayImages/OverlayImagesInput";
 
 const vid = "videos/SandbookHighBitRate.mp4";
 
 const HomeComputer = () => {
+  const [hovered, setHovered] = useState("");
+  const overlaidImages: OverlaidImageInput[] = sandbookOverlaidImages(
+    hovered,
+    setHovered
+  );
   return (
     <div>
       <DisplayOverlay
@@ -18,7 +24,10 @@ const HomeComputer = () => {
           cutTop: true,
           cutBottom: false,
         }}
-        overlaidImages={[mail, terminal]}
+        globalProps={{
+          hovered: hovered,
+        }}
+        overlaidImages={overlaidImages}
       />
     </div>
   );

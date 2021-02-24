@@ -1,0 +1,14 @@
+@media (min-width: 768px) {
+  .shift-40-x {
+    object-position: 40% 0;
+  }
+}
+.overlay-box {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background: #666666;
+  opacity: 0.8;
+  z-index: 1000;
+}
