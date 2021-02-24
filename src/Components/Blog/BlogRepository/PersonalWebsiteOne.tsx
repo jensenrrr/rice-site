@@ -18,7 +18,7 @@ const CreatingPersonalWebsiteOne = () => {
   return (
     <div>
       <h2>Creating a Personal Website</h2>
-      <img src={SandBook} />
+      <img src={SandBook} alt="Sandbook" />
       <h2>Idea</h2>
       <div>
         Once I decided on a personal website I knew I wanted the homepage to be

@@ -5,10 +5,6 @@ import pinch from "./../../Assets/work/pinch.png";
 import carillon from "./../../Assets/work/carillon.png";
 import { Link } from "react-router-dom";
 
-const RiceHubCaption = () => {
-  return <div className="flex-grow pb-5 pt-4 text-center text-lg"></div>;
-};
-
 const WorkHeader = ({ company, title, dateRange }: any) => {
   return (
     <div>
@@ -18,6 +14,7 @@ const WorkHeader = ({ company, title, dateRange }: any) => {
     </div>
   );
 };
+
 const CarillonCaption = () => {
   return (
     <div className="flex-grow pb-5 pt-4 text-center text-lg">
@@ -84,7 +81,7 @@ const WorkList = [
   },
 ];
 
-const WorkHistory = ({}) => {
+const WorkHistory = () => {
   return (
     <div className={"mx-auto"}>
       <div className="flex-1 w-full mt-10 mb-8 text-center text-3xl bold">

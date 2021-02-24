@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Resume from "./Components/Resume";
-import Writing from "./Components/Writing";
+import Writing from "./Components/Writing/Writing";
 import Blogs from "./Components/Blog/Blogs";
 import Projects from "./Components/Projects";
 import Contact from "./Components/Contact";

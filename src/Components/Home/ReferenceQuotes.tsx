@@ -23,9 +23,9 @@ const Circles = ({ list, selected, setSelected }: any) => {
       key={i}
       onClick={() => setSelected(i)}
       className={classNames("rounded-full h-8 w-8", {
-        "ml-5": i != 0,
-        "bg-yellow-200": selected == i,
-        "bg-blue-100": !(selected == i),
+        "ml-5": i !== 0,
+        "bg-yellow-200": selected === i,
+        "bg-blue-100": !(selected === i),
       })}
     />
   ));
