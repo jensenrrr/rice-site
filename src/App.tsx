@@ -8,10 +8,12 @@ import Projects from "./Components/Projects";
 import Contact from "./Components/Contact";
 import Lost from "./Components/Lost";
 import Header from "./Components/Header";
+import ScrollToTop from "./Tools/ScrollToTop";
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
       <Switch>
         <Route exact path="/">
@@ -20,7 +22,7 @@ function App() {
         <Route exact path="/Resume">
           <Resume />
         </Route>
-        <Route exact path="/Writing">
+        <Route path="/Writing">
           <Writing />
         </Route>
         <Route path="/Blog">
