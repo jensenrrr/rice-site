@@ -1,5 +1,5 @@
 import React from "react";
-import ImageAndCaption from "./ImageAndCaption";
+import ImageAndCaption from "../ImageAndCaption";
 import ie from "./../../Assets/work/IE.png";
 import pinch from "./../../Assets/work/pinch.png";
 import carillon from "./../../Assets/work/carillon.png";
