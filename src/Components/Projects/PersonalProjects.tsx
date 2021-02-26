@@ -6,8 +6,8 @@ import {
   UniversityChatCaption,
   EnthuseCaption,
   RiceHubCaption,
-} from "./Captions";
-import ImageAndCaption from "./ImageAndCaption";
+} from "../Captions";
+import ImageAndCaption from "../ImageAndCaption";
 
 const SideSelector = ({ title, selected, i, setSelected }: any) => {
   return (
@@ -65,7 +65,7 @@ const PersonalProjects = () => {
         {
           <ImageAndCaption
             styles={{
-              div: "h-96 mx-auto",
+              div: "w-80 flex flex-col h-96 mx-auto",
             }}
             img={PersonalProjectList[selectedProject].img}
           >
