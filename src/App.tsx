@@ -5,7 +5,7 @@ import Resume from "./Components/Resume";
 import Writing from "./Components/Writing/Writing";
 import Blogs from "./Components/Blog/Blogs";
 import Projects from "./Components/Projects/Projects";
-import Contact from "./Components/Contact";
+import Contact from "./Components/Contact/Contact";
 import Lost from "./Components/Lost";
 import Header from "./Components/Header";
 import ScrollToTop from "./Tools/ScrollToTop";
