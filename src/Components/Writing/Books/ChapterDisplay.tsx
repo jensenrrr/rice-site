@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, Redirect, useParams } from "react-router-dom";
 import { books } from "../books";
+import "./books.css";
 
 const ChapterNavigationButton = ({
   book,
@@ -62,8 +63,7 @@ const ChapterDisplay = () => {
             )}
           </div>
         </div>
-
-        {books[book].chapters[chapterNum]}
+        <div className="book">{books[book].chapters[chapterNum]}</div>
       </div>
     </div>
   );

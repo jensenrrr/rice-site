@@ -1,4 +1,4 @@
-h2 {
+.book h2 {
   display: block;
   text-align: center;
   font-size: 1.5em;
@@ -9,8 +9,8 @@ h2 {
   font-weight: bold;
 }
 
-h1:after,
-h2:after {
+.book h1:after,
+.book h2:after {
   content: "";
   display: block;
   position: relative;
@@ -18,7 +18,7 @@ h2:after {
   border-bottom: 1px solid hsla(0, 0%, 50%, 0.33);
 }
 
-p {
+.book p {
   display: block;
   margin-block-start: 1em;
   margin-block-end: 1em;
