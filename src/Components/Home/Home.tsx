@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HomeComputer from "./HomeComputer";
-import { ReferenceQuotes } from "./ReferenceQuotes";
-import WorkHistory from "./WorkHistory";
-import Footer from "../Footer";
 import Welcome from "./Welcome";
 
 const Home = () => {
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    function handleResize() {
+      window.innerWidth > 640 ? setMobile(false) : setMobile(true);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="w-full">
-      <HomeComputer />
+      {mobile ? null : <HomeComputer />}
       <Welcome />
-      <ReferenceQuotes />
-      <WorkHistory />
-      <Footer />
     </div>
   );
 };
+
 export default Home;
