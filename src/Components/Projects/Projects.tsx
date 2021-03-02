@@ -10,6 +10,7 @@ import prototype from "../../Assets/projects/ucPrototype.png";
 import enthuseHomepage from "../../Assets/projects/EnthuseHomepage.png";
 import ImageAndCaption from "../ImageAndCaption";
 import CreatingPersonalWebsiteOne from "../Blog/BlogRepository/PersonalWebsiteOne";
+import Background from "../Background";
 
 const TopSelector = ({ title, selected, i, setSelected }: any) => {
   return (
@@ -187,8 +188,8 @@ const PersonalWebsite = () => {
 const Projects = () => {
   const [project, setProject] = useState(0);
   return (
-    <div>
-      <div className="text-4xl text-center my-8">Projects</div>
+    <Background>
+      <div className="text-4xl text-center py-10">Projects</div>
       <div className="flex space-x-5 md:space-x-10 mx-auto justify-center max-w-4xl">
         {PersonalProjectList.map((p, i) => (
           <TopSelector
@@ -196,10 +197,11 @@ const Projects = () => {
             selected={i === project}
             setSelected={setProject}
             title={p.title}
+            key={p.title}
           />
         ))}
       </div>
-      <div>
+      <div className="pb-32">
         {project === 0 ? (
           <UniversityChat />
         ) : project === 1 ? (
@@ -208,7 +210,7 @@ const Projects = () => {
           <PersonalWebsite />
         ) : null}
       </div>
-    </div>
+    </Background>
   );
 };
 

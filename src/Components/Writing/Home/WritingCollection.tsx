@@ -3,6 +3,7 @@ import Footer from "../../Footer";
 import BookDisplay from "./BookDisplay";
 import { books, BookInfo } from "../books";
 import { Link } from "react-router-dom";
+import Background from "../../Background";
 
 const Preview: FC<BookInfo> = ({ name, title, genre, status, summary }) => {
   return (
@@ -22,7 +23,6 @@ const Preview: FC<BookInfo> = ({ name, title, genre, status, summary }) => {
 
 const WritingCollection = () => {
   const [summary, setSummary] = useState<BookInfo>(books["Deus"]);
-  console.log(summary);
   const previewRef = useRef<HTMLDivElement>(null);
   const executeScroll = () => {
     if (previewRef && previewRef.current) {
@@ -31,7 +31,7 @@ const WritingCollection = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#f3f3f3" }} className="w-full">
+    <Background classes="w-full">
       <div className="flex flex-col font-serif w-full lg:w-8/12 mx-auto text-center">
         <div className="text-4xl text-blue-800 my-8">Writing Collection</div>
         <div className="text-xl px-10">
@@ -69,7 +69,7 @@ const WritingCollection = () => {
         </div>
       </div>
       <Footer />
-    </div>
+    </Background>
   );
 };
 
