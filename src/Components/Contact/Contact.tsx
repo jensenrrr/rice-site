@@ -1,16 +1,28 @@
 import React from "react";
-import ContactForm from "./ContactForm";
+import { useParams } from "react-router-dom";
+import Background from "../Background";
+import ContactForm, { ContactFormInput } from "./ContactForm";
 
 const Contact = () => {
+  let { defaultSubject }: { defaultSubject: string } = useParams();
+  const contactFormParams: ContactFormInput = {};
+  contactFormParams.contentType =
+    defaultSubject === "Review"
+      ? "Book Review"
+      : defaultSubject === "Comment"
+      ? "Blog Comment"
+      : "Professional Inquiry";
+
   return (
-    <div>
-      <div className="text-4xl text-blue-900 mt-8 mb-4 text-center">
+    <Background>
+      <div className="text-4xl text-blue-900 pt-8 mb-4 text-center">
         Contact
       </div>
       <div className="mx-10 md:mx-0">
-        <ContactForm />
+        <ContactForm {...contactFormParams} />
       </div>
-    </div>
+      <div className="pt-16"></div>
+    </Background>
   );
 };
 

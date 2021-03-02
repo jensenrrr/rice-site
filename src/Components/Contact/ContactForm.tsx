@@ -28,7 +28,7 @@ function validateEmail(mail: string) {
   return false;
 }
 
-interface ContactFormInput {
+export interface ContactFormInput {
   contentType?: "Professional Inquiry" | "Book Review" | "Blog Comment";
   partialFormClasses?: Partial<FormStyleClasses>;
 }
@@ -136,7 +136,6 @@ const ContactForm: FC<ContactFormInput> = ({
   const handleSubmit = (event: any) => {
     event.preventDefault();
     if (validateForm()) {
-      console.log("valid form");
       sendEmail();
       setFormData((prevState) => ({
         ...prevState,
@@ -152,7 +151,6 @@ const ContactForm: FC<ContactFormInput> = ({
     axios
       .post("https://us-central1-rice-site.cloudfunctions.net/submit", formData)
       .then((res) => {
-        console.log("email sent");
         setLoading(false);
         setSent(true);
       })

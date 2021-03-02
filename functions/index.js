@@ -55,14 +55,12 @@ exports.submit = functions.https.onRequest((req, res) => {
       return mailTransport
         .sendMail(mailOptions)
         .then(() => {
-          console.log("New email sent to:", email);
           res.status(200).send({
             isEmailSend: true,
           });
           return;
         })
         .catch((err) => {
-          console.log("BAD ERROR, NOOOO!", err);
           res.status(400);
           return;
         });

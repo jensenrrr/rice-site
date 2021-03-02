@@ -1,7 +1,59 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import profile from "../../Assets/mdFace.png";
+import { ReactComponent as linkedin } from "../../Assets/welcome/linkedin.svg";
+import { ReactComponent as blog } from "../../Assets/welcome/welcomeBlog.svg";
+import { ReactComponent as github } from "../../Assets/welcome/github.svg";
+import { ReactComponent as book } from "../../Assets/welcome/welcomeBook.svg";
+import { ReactComponent as mail } from "../../Assets/welcome/welcomeMail.svg";
 import "./custom.css";
+
+const GitHubIcon = styled(github)`
+  width: 50px;
+  height: 50px;
+  &:hover {
+    path {
+      fill: #7990e1;
+    }
+  }
+`;
+const BookIcon = styled(book)`
+  width: 50px;
+  height: 50px;
+  &:hover {
+    path {
+      fill: #7990e1;
+    }
+  }
+`;
+const LinkedInIcon = styled(linkedin)`
+  width: 50px;
+  height: 50px;
+  &:hover {
+    path {
+      fill: #7990e1;
+    }
+  }
+`;
+const BlogIcon = styled(blog)`
+  width: 50px;
+  height: 50px;
+  &:hover {
+    path {
+      fill: #7990e1;
+    }
+  }
+`;
+const MailIcon = styled(mail)`
+  width: 65px;
+  height: 56px;
+  &:hover {
+    path {
+      fill: #7990e1;
+    }
+  }
+`;
 
 const Welcome = () => {
   return (
@@ -40,12 +92,28 @@ const Welcome = () => {
             development skills and experience, you can check out my resume page{" "}
             <Link className="underline hover:text-blue-500" to="/Writing">
               here
-            </Link>{" "}
+            </Link>
             .
           </div>
         </div>
       </div>
-      {/* Github Linkdin Blog links */}
+      <div className="mt-12 flex flex-row max-w-2xl mx-auto justify-around">
+        <a href="https://github.com/jensenrrr" className="cursor-pointer">
+          <GitHubIcon />
+        </a>
+        <a href="https://github.com/jensenrrr" className="cursor-pointer">
+          <LinkedInIcon />
+        </a>
+        <Link to="/Writing">
+          <BookIcon />
+        </Link>
+        <Link to="/Blog">
+          <BlogIcon />
+        </Link>
+        <Link to="/Contact">
+          <MailIcon />
+        </Link>
+      </div>
     </div>
   );
 };

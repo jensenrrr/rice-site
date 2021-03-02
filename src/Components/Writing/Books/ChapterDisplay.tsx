@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, Redirect, useParams } from "react-router-dom";
+import Background from "../../Background";
 import { books } from "../books";
 import "./books.css";
 
@@ -31,7 +32,7 @@ const ChapterDisplay = () => {
   }
 
   return (
-    <div style={{ backgroundColor: "#f3f3f3" }} className="w-full">
+    <Background classes="w-full">
       <div className="max-w-2xl mx-auto px-5 pt-10">
         <div
           className={`text-center text-4xl ${
@@ -65,7 +66,7 @@ const ChapterDisplay = () => {
         </div>
         <div className="book">{books[book].chapters[chapterNum]}</div>
       </div>
-    </div>
+    </Background>
   );
 };
 
