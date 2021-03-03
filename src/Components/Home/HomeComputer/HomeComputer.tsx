@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import pic from "../../Assets/HomeComputerCropped.jpg";
-import DisplayOverlay from "../../Tools/DisplayOverlay/DisplayOverlay";
-import { OverlaidImageInput } from "../../Tools/DisplayOverlay/OverlayTypes";
-import { sandbookOverlaidImages } from "./OverlayImages/OverlayImagesInput";
+import pic from "../../../Assets/HomeComputerCropped.jpg";
+import DisplayOverlay from "../../../Tools/DisplayOverlay/DisplayOverlay";
+import { OverlaidImageInput } from "../../../Tools/DisplayOverlay/OverlayTypes";
+import sandbookOverlaidImages from "./OverlayImagesInput";
 
 const vid = "videos/SandbookHighBitRate.mp4";
 

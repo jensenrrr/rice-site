@@ -5,12 +5,14 @@ import {
   OverlayImageRenderProps,
   AbsolutePositionAndSize,
 } from "../../../Tools/DisplayOverlay/OverlayTypes";
-import BlogIcon from "./BlogIcon";
-import BookIcon from "./BookIcon";
-import TerminalIcon from "./TerminalIcon";
 import { Link } from "react-router-dom";
-import ResumeIcon from "./ResumeIcon";
-import ContactIcon from "./ContactIcon";
+import {
+  TerminalIcon,
+  BlogIcon,
+  BookIcon,
+  ResumeIcon,
+  ContactIcon,
+} from "./OverlayIcons";
 import "../custom.css";
 
 interface DynamicSVGs {
@@ -48,7 +50,7 @@ const DirectoryDisplay: FC<Directory> = (props) => {
   return <div></div>;
 };
 
-export const sandbookOverlaidImages = (
+const sandbookOverlaidImages = (
   hovered: string,
   setHovered: Dispatch<SetStateAction<string>>
 ) => {
@@ -179,3 +181,5 @@ export const sandbookOverlaidImages = (
 
   return [terminal, blog, book, resume, contact, directory(hovered)];
 };
+
+export default sandbookOverlaidImages;
