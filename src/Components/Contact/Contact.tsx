@@ -1,11 +1,12 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Route, useParams, useRouteMatch } from "react-router-dom";
 import Background from "../Background";
 import ContactForm, { ContactFormInput } from "./ContactForm";
 
-const Contact = () => {
+const ContactPage = () => {
   let { defaultSubject }: { defaultSubject: string } = useParams();
   const contactFormParams: ContactFormInput = {};
+
   contactFormParams.contentType =
     defaultSubject === "Review"
       ? "Book Review"
@@ -23,6 +24,16 @@ const Contact = () => {
       </div>
       <div className="pt-16"></div>
     </Background>
+  );
+};
+
+const Contact = () => {
+  let { path } = useRouteMatch();
+
+  return (
+    <Route path={`${path}/:defaultSubject?`}>
+      <ContactPage />
+    </Route>
   );
 };
 

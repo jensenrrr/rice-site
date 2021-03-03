@@ -1,11 +1,8 @@
-import { CSSProperties, FC } from "react";
-
-export interface OverlayImageRenderProps {
-  img: string;
+export interface OverlayElementRenderProps {
   globalProps: any;
   absolutePositionAndSize: AbsolutePositionAndSize;
 }
-export interface OverlayImageInstance {
+export interface OverlayElementInstance {
   render: any;
   globalProps: any;
   absolutePositionAndSize?: AbsolutePositionAndSize;
@@ -21,7 +18,7 @@ export interface DisplayOverlayInput {
   readonly backgroundVideo?: string;
   readonly backgroundScale?: BackgroundScale;
   readonly globalProps?: any;
-  readonly overlaidImages: readonly OverlaidImageInput[];
+  readonly overlaidElements: readonly OverlaidElementInput[];
 }
 export interface BackgroundScale {
   width?: number;
@@ -30,12 +27,12 @@ export interface BackgroundScale {
   cutTop?: boolean;
   cutBottom?: boolean;
 }
-export interface OverlaidImageInput {
+export interface OverlaidElementInput {
   readonly render: any;
   readonly imgProps?: any;
   readonly relativePositionAndSize: RelativePositionAndSize;
 }
-export interface OverlaidImageData {
+export interface OverlaidElementData {
   readonly render: any;
   readonly imgProps: any;
   readonly relativePositionAndSize: RelativePositionAndSize;

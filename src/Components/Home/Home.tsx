@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import HomeComputer from "./HomeComputer";
-import Welcome from "./Welcome";
+import HomeComputer from "./HomeComputer/HomeComputer";
+import Welcome from "./Welcome/Welcome";
 
 const Home = () => {
-  const [mobile, setMobile] = useState(false);
+  const [mobile, setMobile] = useState(window.innerWidth > 640 ? false : true);
+
   useEffect(() => {
     function handleResize() {
       window.innerWidth > 640 ? setMobile(false) : setMobile(true);

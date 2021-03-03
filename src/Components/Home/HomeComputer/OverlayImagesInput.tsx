@@ -1,16 +1,18 @@
 import React, { Dispatch, SetStateAction, FC } from "react";
-import { absolutePositionToCSS } from "../../../Tools/DisplayOverlay/DisplayOverlayLogic";
+import { absolutePositionToCSS } from "../../../Tools/DisplayOverlay/PublicTools";
 import {
-  OverlaidImageInput,
-  OverlayImageRenderProps,
+  OverlaidElementInput,
+  OverlayElementRenderProps,
   AbsolutePositionAndSize,
-} from "../../../Tools/DisplayOverlay/OverlayTypes";
-import BlogIcon from "./BlogIcon";
-import BookIcon from "./BookIcon";
-import TerminalIcon from "./TerminalIcon";
+} from "../../../Tools/DisplayOverlay/Core/OverlayTypes";
 import { Link } from "react-router-dom";
-import ResumeIcon from "./ResumeIcon";
-import ContactIcon from "./ContactIcon";
+import {
+  TerminalIcon,
+  BlogIcon,
+  BookIcon,
+  ResumeIcon,
+  ContactIcon,
+} from "./OverlayIcons";
 import "../custom.css";
 
 interface DynamicSVGs {
@@ -48,12 +50,12 @@ const DirectoryDisplay: FC<Directory> = (props) => {
   return <div></div>;
 };
 
-export const sandbookOverlaidImages = (
+const sandbookOverlaidImages = (
   hovered: string,
   setHovered: Dispatch<SetStateAction<string>>
 ) => {
-  const blog: OverlaidImageInput = {
-    render: ({ absolutePositionAndSize }: OverlayImageRenderProps) => (
+  const blog: OverlaidElementInput = {
+    render: ({ absolutePositionAndSize }: OverlayElementRenderProps) => (
       <IconContainer
         name={"Blog"}
         setHovered={setHovered}
@@ -73,8 +75,8 @@ export const sandbookOverlaidImages = (
     },
   };
 
-  const terminal: OverlaidImageInput = {
-    render: ({ absolutePositionAndSize }: OverlayImageRenderProps) => (
+  const terminal: OverlaidElementInput = {
+    render: ({ absolutePositionAndSize }: OverlayElementRenderProps) => (
       <IconContainer
         name={"Projects"}
         setHovered={setHovered}
@@ -94,8 +96,8 @@ export const sandbookOverlaidImages = (
     },
   };
 
-  const book: OverlaidImageInput = {
-    render: ({ absolutePositionAndSize }: OverlayImageRenderProps) => (
+  const book: OverlaidElementInput = {
+    render: ({ absolutePositionAndSize }: OverlayElementRenderProps) => (
       <IconContainer
         name={"Writing"}
         setHovered={setHovered}
@@ -115,8 +117,8 @@ export const sandbookOverlaidImages = (
     },
   };
 
-  const resume: OverlaidImageInput = {
-    render: ({ absolutePositionAndSize }: OverlayImageRenderProps) => (
+  const resume: OverlaidElementInput = {
+    render: ({ absolutePositionAndSize }: OverlayElementRenderProps) => (
       <IconContainer
         name={"Resume"}
         setHovered={setHovered}
@@ -136,8 +138,8 @@ export const sandbookOverlaidImages = (
     },
   };
 
-  const contact: OverlaidImageInput = {
-    render: ({ absolutePositionAndSize }: OverlayImageRenderProps) => (
+  const contact: OverlaidElementInput = {
+    render: ({ absolutePositionAndSize }: OverlayElementRenderProps) => (
       <IconContainer
         name={"Contact"}
         setHovered={setHovered}
@@ -157,12 +159,12 @@ export const sandbookOverlaidImages = (
     },
   };
 
-  const directory: (hovered: string) => OverlaidImageInput = (hovered) => {
+  const directory: (hovered: string) => OverlaidElementInput = (hovered) => {
     return {
       render: ({
         absolutePositionAndSize,
         globalProps,
-      }: OverlayImageRenderProps) => (
+      }: OverlayElementRenderProps) => (
         <DirectoryDisplay
           hovered={globalProps.hovered}
           absolutePositionAndSize={absolutePositionAndSize}
@@ -179,3 +181,5 @@ export const sandbookOverlaidImages = (
 
   return [terminal, blog, book, resume, contact, directory(hovered)];
 };
+
+export default sandbookOverlaidImages;

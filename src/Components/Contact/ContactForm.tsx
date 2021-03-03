@@ -197,7 +197,10 @@ const ContactForm: FC<ContactFormInput> = ({
                   </div>
                   <button
                     className="w-8/12 mx-auto mb-5 bg-blue-500 hover:bg-blue-400 shadow focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                    onClick={() => (setSent(false), setRedirect(true))}
+                    onClick={() => {
+                      setSent(false);
+                      setRedirect(true);
+                    }}
                   >
                     Return to Home
                   </button>

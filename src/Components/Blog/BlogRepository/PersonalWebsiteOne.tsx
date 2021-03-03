@@ -6,7 +6,7 @@ import beachFace from "../../../Assets/mdFace.png";
 export const CreatingPersonalWebsiteOneDetails: BlogPreviewInfo = {
   img: beachFace,
   alt: "Jensen Rice (Author) at the Beach",
-  title: "From Sand Scultping To TypeScript: Making a Personal Website",
+  title: "From Sand Scultping To TypeScript: Making a Personal Website (Pt. 1)",
   category: "TECHNICAL / FUN",
   summary:
     "Making a personal website (and hoping to make it stand out) is a lot of work, but it can also be a lot of fun!",
@@ -58,11 +58,18 @@ const CreatingPersonalWebsiteOne = () => {
       />
       <div>
         We talked about the diving off the cliff idea, but ran into the issues
-        of: * It's cold out. (December) * We need a cliff. (Florida) * We have
-        work. (It would require at least a day trip to make it to a cliff) Trey,
-        however, had been looking at sandsculpting lately, and once that idea
-        came up we quickly arrive at a sand sculpted computer. You can see a
-        couple of the images we searched up online.
+        of:
+        <ul>
+          <li>* It's cold out. (December)</li>
+          <li>* We need a cliff. (Florida) </li>
+          <li>
+            * We have work. (It would require at least a day trip to make it to
+            a cliff)
+          </li>
+        </ul>
+        Trey, however, had been looking at sandsculpting lately, and once that
+        idea came up we quickly arrive at a sand sculpted computer. You can see
+        a couple of the images we searched up online.
       </div>
       <img
         src="/images/blog/website/fakeSandComputer.jpg"
