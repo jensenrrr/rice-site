@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, useParams, useRouteMatch } from "react-router-dom";
+import { Route, useParams, useRouteMatch } from "react-router-dom";
 import Background from "../Background";
 import ContactForm, { ContactFormInput } from "./ContactForm";
 

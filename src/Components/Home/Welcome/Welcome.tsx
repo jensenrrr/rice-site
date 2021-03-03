@@ -50,6 +50,7 @@ const Welcome = () => {
       <div className="mt-12 flex flex-row max-w-2xl mx-auto justify-around">
         <a
           href="https://github.com/jensenrrr"
+          rel="noreferrer"
           target="_blank"
           className="cursor-pointer"
         >
@@ -57,6 +58,7 @@ const Welcome = () => {
         </a>
         <a
           href="https://www.linkedin.com/in/jensen-rice-427795158/"
+          rel="noreferrer"
           target="_blank"
           className="cursor-pointer"
         >

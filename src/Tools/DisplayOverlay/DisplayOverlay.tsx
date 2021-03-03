@@ -79,7 +79,12 @@ const DisplayOverlay: FC<DisplayOverlayInput> = ({
       backgroundHeight: currentBackgroundSize.height,
       backgroundWidth: currentBackgroundSize.width,
     });
-  }, [currentBackgroundSize, setVerticalMargin, overlaidImagesDispatch]);
+  }, [
+    currentBackgroundSize,
+    backgroundScale,
+    setVerticalMargin,
+    overlaidImagesDispatch,
+  ]);
 
   useEffect(() => {
     window.addEventListener("resize", resizedBackground);

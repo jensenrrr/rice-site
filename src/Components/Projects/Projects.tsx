@@ -60,7 +60,11 @@ const UniversityChat = () => {
         </div>
       </div>
       <div className="flex flex-col md:flex-row md:mb-12 mx-auto">
-        <img className="mb-6 md:mb-0 h-80 mx-auto" src={prototype} />
+        <img
+          className="mb-6 md:mb-0 h-80 mx-auto"
+          alt="UC Prototype"
+          src={prototype}
+        />
         <div className="md:w-8/12 flex items-center">
           University Chat started as a school project for Human-Computer
           Interaction at the University of Florida. We had a team of four
@@ -105,7 +109,7 @@ const Enthuse = () => {
   return (
     <div className="text-lg max-w-3xl mx-auto">
       <div className="text-3xl mb-8 text-center">Enthuse</div>
-      <img src={enthuseHomepage} />
+      <img alt="Enthuse Homepage" src={enthuseHomepage} />
       <div className="space-y-8">
         <div className="mt-8">
           At first glance, Enthuse is just another wave in the ocean of social

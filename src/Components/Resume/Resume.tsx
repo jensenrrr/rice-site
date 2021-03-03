@@ -38,7 +38,7 @@ const Resume = () => {
         <ReferenceQuotes />
         <div className="max-w-2xl mx-5 md:mx-auto mt-12 bg-white py-4 rounded-lg shadow-lg">
           <a href="/files/JensenRice_Resume.pdf" target="_blank">
-            <img src={resumeImg} />
+            <img alt="Resume" src={resumeImg} />
           </a>
         </div>
         <div className="pb-12"></div>

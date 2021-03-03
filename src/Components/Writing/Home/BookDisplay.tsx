@@ -1,5 +1,4 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { Link } from "react-router-dom";
 import { BookInfo } from "../books";
 
 export interface BookDisplayInfo {
@@ -20,7 +19,10 @@ export const BookDisplay = ({
   return (
     <div
       className="flex flex-col bg-white rounded-2xl p-3 m-3 shadow-md"
-      onClick={() => (setSummary(bookInfo), executeScroll())}
+      onClick={() => {
+        setSummary(bookInfo);
+        executeScroll();
+      }}
     >
       <BookIcon icon={bookInfo.icon} />
       <div className="text-xl">{bookInfo.title}</div>
