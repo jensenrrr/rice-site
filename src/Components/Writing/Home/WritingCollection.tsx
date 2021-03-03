@@ -1,25 +1,9 @@
-import React, { FC, useRef, useState } from "react";
-import Footer from "../../Footer";
+import React, { useRef, useState } from "react";
 import BookDisplay from "./BookDisplay";
 import { books, BookInfo } from "../books";
-import { Link } from "react-router-dom";
 import Background from "../../Background";
-
-const Preview: FC<BookInfo> = ({ name, title, genre, status, summary }) => {
-  return (
-    <div>
-      <div>{title}</div>
-      <div>{genre}</div>
-      <div>{status}</div>
-      <div>{summary}</div>
-      <Link to={`/Writing/${name}/1`}>
-        <div className="flex-shrink-0 bg-blue-500 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200">
-          Read Book
-        </div>
-      </Link>
-    </div>
-  );
-};
+import ContactFooter from "../../ContactFooter";
+import Preview from "./Preview";
 
 const WritingCollection = () => {
   const [summary, setSummary] = useState<BookInfo>(books["Deus"]);
@@ -68,7 +52,15 @@ const WritingCollection = () => {
           <Preview {...summary} />
         </div>
       </div>
-      <Footer />
+      <ContactFooter
+        borderColor={"border-gray-600"}
+        hoverBorderColor={"border-blue-300"}
+        textColor={"text-gray-600"}
+        hoverTextColor={"text-blue-400"}
+        containerClasses={"mt-6 mb-10"}
+        text={"Leave a Review"}
+        url={"/Contact/Review"}
+      />
     </Background>
   );
 };
