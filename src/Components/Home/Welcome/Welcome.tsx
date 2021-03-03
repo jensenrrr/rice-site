@@ -76,7 +76,7 @@ const Welcome = () => {
         hoverBorderColor={"border-blue-300"}
         textColor={"text-white"}
         hoverTextColor={"text-blue-400"}
-        containerClasses={"mt-12"}
+        containerClasses={"mt-12 mx-4"}
         text={"Contact"}
         url={"/Contact"}
       />

@@ -32,15 +32,17 @@ const IconContainer: FC<DynamicSVGs> = (props) => (
     </div>
   </Link>
 );
+
 interface Directory {
   absolutePositionAndSize: AbsolutePositionAndSize;
   hovered: string;
 }
+
 const DirectoryDisplay: FC<Directory> = (props) => {
   if (props.hovered) {
     return (
       <div
-        className="overlay-box text-3xl"
+        className="overlay-box md:text-3xl sm:p-2 lg:p-3 xl:p-4 rounded-md lg:text-4xl xl:text-5xl"
         style={{ top: `${props.absolutePositionAndSize.top}px` }}
       >
         /{props.hovered}

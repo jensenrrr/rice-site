@@ -43,6 +43,8 @@ const ContactFooter: FC<IContactFooter> = ({
     <Link to={url}>
       <div
         className={`flex flex-row items-center space-x-4 cursor-pointer ${containerClasses}`}
+        onMouseEnter={() => setContactHover(true)}
+        onMouseLeave={() => setContactHover(false)}
       >
         <HorizontalLine
           borderColor={borderColor}
@@ -50,8 +52,6 @@ const ContactFooter: FC<IContactFooter> = ({
           contactHover={contactHover}
         />
         <div
-          onMouseEnter={() => setContactHover(true)}
-          onMouseLeave={() => setContactHover(false)}
           className={`font-semibold text-3xl ${
             contactHover ? hoverTextColor : textColor
           }`}
