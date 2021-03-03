@@ -1,8 +1,11 @@
 import React from "react";
-import { OverlaidImageData, OverlayImageInstance } from "./OverlayTypes";
+import {
+  OverlaidElementData,
+  OverlayElementInstance,
+} from "../Core/OverlayTypes";
 
-export const OverlayImages = (
-  overlayImages: readonly OverlaidImageData[],
+export const OverlayElements = (
+  overlayImages: readonly OverlaidElementData[],
   globalProps: any
 ) =>
   overlayImages.map((overlaidImage, i) => (
@@ -18,6 +21,6 @@ export const OverlayImage = ({
   render,
   globalProps,
   absolutePositionAndSize,
-}: OverlayImageInstance) => {
+}: OverlayElementInstance) => {
   return render({ absolutePositionAndSize, globalProps });
 };

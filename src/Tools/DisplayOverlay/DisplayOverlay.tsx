@@ -6,16 +6,19 @@ import React, {
   FC,
   Reducer,
 } from "react";
-import Background from "./Background";
-import { initImageState, overlaidImagesReducer } from "./DisplayOverlayLogic";
-import { OverlayImages } from "./OverlayImage";
+import Background from "./Display/Background";
+import {
+  initOverlaidElementsState,
+  overlaidElementsReducer,
+} from "./Core/OverlayElementsState";
+import { OverlayElements } from "./Display/DisplayOverlayElements";
 import {
   DisplayOverlayInput,
-  OverlaidImageData,
-  OverlaidImageInput,
+  OverlaidElementData,
+  OverlaidElementInput,
   ResizeAction,
-} from "./OverlayTypes";
-import { VerticalCutOutput, getVerticalMargin } from "./VerticalCrop";
+} from "./Core/OverlayTypes";
+import { VerticalCutOutput, getVerticalMargin } from "./Core/VerticalCrop";
 
 const DisplayOverlay: FC<DisplayOverlayInput> = ({
   backgroundImage,
@@ -28,12 +31,12 @@ const DisplayOverlay: FC<DisplayOverlayInput> = ({
     cutBottom: false,
   },
   globalProps,
-  overlaidImages,
+  overlaidElements,
 }: DisplayOverlayInput) => {
-  const [overlaidImagesState, overlaidImagesDispatch] = useReducer<
-    Reducer<readonly OverlaidImageData[], ResizeAction>,
-    readonly OverlaidImageInput[]
-  >(overlaidImagesReducer, overlaidImages, initImageState);
+  const [overlaidElementsState, overlaidElementsDispatch] = useReducer<
+    Reducer<readonly OverlaidElementData[], ResizeAction>,
+    readonly OverlaidElementInput[]
+  >(overlaidElementsReducer, overlaidElements, initOverlaidElementsState);
 
   const backgroundRef = useRef<HTMLDivElement>(null);
 
@@ -74,7 +77,7 @@ const DisplayOverlay: FC<DisplayOverlayInput> = ({
 
     setVerticalMargin(newVerticalMargin);
 
-    overlaidImagesDispatch({
+    overlaidElementsDispatch({
       verticalMargin: newVerticalMargin.topCut,
       backgroundHeight: currentBackgroundSize.height,
       backgroundWidth: currentBackgroundSize.width,
@@ -83,7 +86,7 @@ const DisplayOverlay: FC<DisplayOverlayInput> = ({
     currentBackgroundSize,
     backgroundScale,
     setVerticalMargin,
-    overlaidImagesDispatch,
+    overlaidElementsDispatch,
   ]);
 
   useEffect(() => {
@@ -99,7 +102,7 @@ const DisplayOverlay: FC<DisplayOverlayInput> = ({
         backgroundRef={backgroundRef}
         onBackgroundLoad={onBackgroundLoad}
       />
-      {OverlayImages(overlaidImagesState, globalProps)}
+      {OverlayElements(overlaidElementsState, globalProps)}
     </div>
   );
 };
