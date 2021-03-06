@@ -12,6 +12,11 @@ const HomeComputer = () => {
     hovered,
     setHovered
   );
+
+  const onLoad = () => {
+    window.scrollTo({ top: 0, left: 0 });
+  };
+
   return (
     <div>
       <DisplayOverlay
@@ -28,6 +33,7 @@ const HomeComputer = () => {
           hovered: hovered,
         }}
         overlaidElements={overlaidImages}
+        onLoad={onLoad}
       />
     </div>
   );

@@ -18,6 +18,7 @@ export interface DisplayOverlayInput {
   readonly backgroundVideo?: string;
   readonly backgroundScale?: BackgroundScale;
   readonly globalProps?: any;
+  readonly onLoad?: () => void;
   readonly overlaidElements: readonly OverlaidElementInput[];
 }
 export interface BackgroundScale {
