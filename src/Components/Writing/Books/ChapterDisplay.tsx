@@ -65,6 +65,28 @@ const ChapterDisplay = () => {
           </div>
         </div>
         <div className="book">{books[book].chapters[chapterNum]}</div>
+        <div className="max-w-2xl mt-6 pb-12 flex justify-between">
+          {chapterNum > 0 ? (
+            <ChapterNavigationButton
+              book={book}
+              chapter={chapterNum}
+              text="Previous Chapter"
+            />
+          ) : (
+            <div></div>
+          )}
+          <div>
+            {chapterNum < books[book].chapters.length - 1 ? (
+              <ChapterNavigationButton
+                book={book}
+                chapter={chapterNum + 2}
+                text="Next Chapter"
+              />
+            ) : (
+              <div></div>
+            )}
+          </div>
+        </div>
       </div>
     </Background>
   );

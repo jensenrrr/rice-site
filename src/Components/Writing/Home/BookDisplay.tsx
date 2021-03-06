@@ -1,4 +1,5 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
+import { BookShelfIcon } from "../BookIcons";
 import { BookInfo } from "../books";
 
 export interface BookDisplayInfo {
@@ -7,26 +8,30 @@ export interface BookDisplayInfo {
   setSummary: Dispatch<SetStateAction<BookInfo>>;
 }
 
-const BookIcon = ({ icon }: { icon: string }) => {
-  return <img alt="Book Icon" className="object-contain" src={icon} />;
-};
-
 export const BookDisplay = ({
   bookInfo,
   executeScroll,
   setSummary,
 }: BookDisplayInfo) => {
+  const [hover, setHover] = useState(false);
+
   return (
     <div
-      className="flex flex-col bg-white rounded-2xl p-3 m-3 shadow-md"
+      className="flex flex-col space-y-2 h-64 w-56 cursor-pointer bg-white rounded-2xl p-3 m-3 shadow-md"
       onClick={() => {
         setSummary(bookInfo);
         executeScroll();
       }}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
-      <BookIcon icon={bookInfo.icon} />
-      <div className="text-xl">{bookInfo.title}</div>
-      <div className="text-lg text-blue-500">{bookInfo.genre}</div>
+      <div className="h-4/6 mx-auto">
+        <BookShelfIcon name={bookInfo.name} height={144} hover={hover} />
+      </div>
+      <div>
+        <div className="text-xl">{bookInfo.title}</div>
+        <div className="text-lg text-blue-500">{bookInfo.genre}</div>
+      </div>
     </div>
   );
 };

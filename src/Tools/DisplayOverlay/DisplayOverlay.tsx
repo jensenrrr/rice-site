@@ -32,6 +32,7 @@ const DisplayOverlay: FC<DisplayOverlayInput> = ({
   },
   globalProps,
   overlaidElements,
+  onLoad,
 }: DisplayOverlayInput) => {
   const [overlaidElementsState, overlaidElementsDispatch] = useReducer<
     Reducer<readonly OverlaidElementData[], ResizeAction>,
@@ -62,8 +63,10 @@ const DisplayOverlay: FC<DisplayOverlayInput> = ({
       });
     }
   }
+
   const onBackgroundLoad = () => {
     resizedBackground();
+    if (onLoad) onLoad();
   };
 
   useEffect(() => {

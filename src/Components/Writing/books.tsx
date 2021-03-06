@@ -7,15 +7,22 @@ import deusOne from "./Books/Deus/one";
 import trailOne from "./Books/Trail/one";
 import worldOne from "./Books/World/one";
 import worldTwo from "./Books/World/two";
+import worldThree from "./Books/World/three";
+import worldFour from "./Books/World/four";
 import roseOne from "./Books/Rose/one";
 import roseTwo from "./Books/Rose/two";
+import { FC } from "react";
+
+import { DeusIcon, RoseIcon, WandIcon, TrailIcon } from "./BookIcons";
 
 export interface BookInfo {
   name: string;
   title: string;
+  themeColor: string;
   titleClasses?: string;
   genre: string;
   icon: string;
+  iconRender: FC;
   status: string;
   chapters: JSX.Element[];
   summary: string;
@@ -25,9 +32,11 @@ export const books: Record<string, BookInfo> = {
   Deus: {
     name: "Deus",
     title: "Deus Ex Machina",
+    themeColor: "#dedee0",
     titleClasses: "font-mono",
     genre: "Science Fiction",
     icon: deus,
+    iconRender: DeusIcon,
     status: "In Progress",
     chapters: [deusOne],
     summary:
@@ -40,8 +49,10 @@ export const books: Record<string, BookInfo> = {
   Rose: {
     name: "Rose",
     title: "Rose Thorns",
+    themeColor: "#fce7fa",
     genre: "Western Fantasy",
     icon: rose,
+    iconRender: RoseIcon,
     status: "In Progress",
     chapters: [roseOne, roseTwo],
     summary:
@@ -58,10 +69,12 @@ export const books: Record<string, BookInfo> = {
   World: {
     name: "World",
     title: "The World Outside",
+    themeColor: "#F2D8FE",
     genre: "Harry Potter Fan Fiction",
     icon: wand,
+    iconRender: WandIcon,
     status: "In Progress",
-    chapters: [worldOne, worldTwo],
+    chapters: [worldOne, worldTwo, worldThree, worldFour],
     summary:
       "Myles has never seen the world outside of the Orphanage, none of the orphans had. " +
       "He has been there nearly 11 years now, though, and he's due to graduate soon. But he doesn't " +
@@ -72,7 +85,9 @@ export const books: Record<string, BookInfo> = {
     name: "Trail",
     title: "Trail of Names",
     genre: "Heroic Fantasy",
+    themeColor: "#E5FED8",
     icon: trail,
+    iconRender: TrailIcon,
     status: "In Progress",
     chapters: [trailOne],
     summary:

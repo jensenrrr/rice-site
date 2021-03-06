@@ -1,15 +1,35 @@
 import React, { FC } from "react";
 import { BookInfo } from "../books";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-const Wrapper = styled.div`
+const colorIn = (startingColor: string, endingColor: string) => keyframes`
+0% {
+  background-color:${startingColor};
+}
+100%{
+  background-color:${endingColor};
+}
+`;
+
+const Wrapper = styled.div<{ themeColor: string }>`
+  animation: ${(props) => colorIn(props.themeColor, "white")} 2s linear;
   background-color: white;
 `;
 
-const Preview: FC<BookInfo> = ({ name, title, genre, status, summary }) => {
+const Preview: FC<BookInfo> = ({
+  name,
+  title,
+  themeColor,
+  genre,
+  status,
+  summary,
+}) => {
   return (
-    <Wrapper className="max-w-2xl rounded-md p-6 mt-8 mx-auto space-y-3">
+    <Wrapper
+      themeColor={themeColor}
+      className="max-w-2xl rounded-md p-6 mt-8 shadow-md mx-auto space-y-3"
+    >
       <div>
         <div className="text-xl font-semibold">{title}</div>
         <div className="text-lg text-blue-500">{genre}</div>
