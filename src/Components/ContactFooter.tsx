@@ -42,7 +42,7 @@ const ContactFooter: FC<IContactFooter> = ({
   return (
     <Link to={url}>
       <div
-        className={`flex flex-row items-center space-x-4 cursor-pointer ${containerClasses}`}
+        className={`flex flex-row items-center mx-auto max-w-6xl space-x-4 cursor-pointer ${containerClasses}`}
         onMouseEnter={() => setContactHover(true)}
         onMouseLeave={() => setContactHover(false)}
       >
