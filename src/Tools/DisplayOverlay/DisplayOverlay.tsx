@@ -21,6 +21,7 @@ import {
 import { VerticalCutOutput, getVerticalMargin } from "./Core/VerticalCrop";
 
 const DisplayOverlay: FC<DisplayOverlayInput> = ({
+  background,
   backgroundImage,
   backgroundVideo,
   backgroundScale = {
@@ -64,6 +65,11 @@ const DisplayOverlay: FC<DisplayOverlayInput> = ({
     }
   }
 
+  useEffect(() => {
+    window.addEventListener("resize", resizedBackground);
+    return () => window.removeEventListener("resize", resizedBackground);
+  });
+
   const onBackgroundLoad = () => {
     resizedBackground();
     if (onLoad) onLoad();
@@ -92,14 +98,10 @@ const DisplayOverlay: FC<DisplayOverlayInput> = ({
     overlaidElementsDispatch,
   ]);
 
-  useEffect(() => {
-    window.addEventListener("resize", resizedBackground);
-    return () => window.removeEventListener("resize", resizedBackground);
-  });
-
   return (
     <div style={verticalMargin.styles}>
       <Background
+        background={background}
         backgroundImage={backgroundImage}
         backgroundVideo={backgroundVideo}
         backgroundRef={backgroundRef}

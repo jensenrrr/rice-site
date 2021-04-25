@@ -2,6 +2,11 @@ export interface OverlayElementRenderProps {
   globalProps: any;
   absolutePositionAndSize: AbsolutePositionAndSize;
 }
+export interface OverlayBackgroundRenderProps {
+  backgroundRef: React.RefObject<HTMLDivElement>;
+  backgroundProps?: any;
+  onBackgroundLoad: () => void;
+}
 export interface OverlayElementInstance {
   render: any;
   globalProps: any;
@@ -20,6 +25,7 @@ export interface DisplayOverlayInput {
   readonly globalProps?: any;
   readonly onLoad?: () => void;
   readonly overlaidElements: readonly OverlaidElementInput[];
+  readonly background: OverlayBackground;
 }
 export interface BackgroundScale {
   width?: number;
@@ -28,6 +34,17 @@ export interface BackgroundScale {
   cutTop?: boolean;
   cutBottom?: boolean;
 }
+export interface OverlayBackground {
+  readonly render: any;
+  readonly backgroundProps?: any;
+}
+export interface OverlayBackgroundInstance {
+  readonly render: any;
+  readonly backgroundProps?: any;
+  backgroundRef: React.RefObject<HTMLDivElement>;
+  onBackgroundLoad: () => void;
+}
+
 export interface OverlaidElementInput {
   readonly render: any;
   readonly imgProps?: any;

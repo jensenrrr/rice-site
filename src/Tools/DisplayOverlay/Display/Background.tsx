@@ -1,7 +1,11 @@
 import React from "react";
-import ReactPlayer from "react-player";
+import {
+  OverlayBackground,
+  OverlayBackgroundInstance,
+} from "../Core/OverlayTypes";
 
 interface BackgroundInput {
+  background: OverlayBackground;
   backgroundImage: string;
   backgroundVideo?: string;
   backgroundRef: React.RefObject<HTMLDivElement>;
@@ -9,27 +13,19 @@ interface BackgroundInput {
 }
 
 const Background = ({
+  background,
   backgroundImage,
   backgroundVideo,
   backgroundRef,
   onBackgroundLoad,
 }: BackgroundInput) => {
-  return backgroundVideo ? (
-    <div
-      ref={backgroundRef}
-      style={{ position: "relative", paddingTop: "56.25%", maxHeight: "2000" }}
-    >
-      <ReactPlayer
-        url={backgroundVideo}
-        muted
-        playing
-        loop
-        onStart={onBackgroundLoad}
-        width="100%"
-        height="100%"
-        style={{ position: "absolute", top: 0, left: 0 }}
-      />
-    </div>
+  return background ? (
+    <CustomBackgroundDisplay
+      render={background.render}
+      backgroundProps={background.backgroundProps}
+      backgroundRef={backgroundRef}
+      onBackgroundLoad={onBackgroundLoad}
+    />
   ) : (
     <div ref={backgroundRef}>
       <img
@@ -40,6 +36,15 @@ const Background = ({
       />
     </div>
   );
+};
+
+const CustomBackgroundDisplay = ({
+  render,
+  backgroundProps,
+  onBackgroundLoad,
+  backgroundRef,
+}: OverlayBackgroundInstance) => {
+  return render({ backgroundProps, onBackgroundLoad, backgroundRef });
 };
 
 export default Background;
