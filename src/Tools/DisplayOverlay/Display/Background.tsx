@@ -5,31 +5,29 @@ import {
 } from "../Core/OverlayTypes";
 
 interface BackgroundInput {
-  background: OverlayBackground;
-  backgroundImage: string;
-  backgroundVideo?: string;
+  background: OverlayBackground | string;
   backgroundRef: React.RefObject<HTMLDivElement>;
   onBackgroundLoad: () => void;
 }
 
 const Background = ({
   background,
-  backgroundImage,
-  backgroundVideo,
   backgroundRef,
   onBackgroundLoad,
 }: BackgroundInput) => {
-  return background ? (
+  let customBackground = background as OverlayBackground;
+  let imageBackground = background as string;
+  return customBackground.render ? (
     <CustomBackgroundDisplay
-      render={background.render}
-      backgroundProps={background.backgroundProps}
+      render={customBackground.render}
+      backgroundProps={customBackground.backgroundProps}
       backgroundRef={backgroundRef}
       onBackgroundLoad={onBackgroundLoad}
     />
   ) : (
     <div ref={backgroundRef}>
       <img
-        src={backgroundImage}
+        src={imageBackground}
         onLoad={onBackgroundLoad}
         style={{ position: "relative", width: "100%" }}
         alt={"Well this doesn't look too good."}

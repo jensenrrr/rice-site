@@ -19,13 +19,11 @@ export interface AbsolutePositionAndSize {
   height: number;
 }
 export interface DisplayOverlayInput {
-  readonly backgroundImage: string;
-  readonly backgroundVideo?: string;
+  readonly background: OverlayBackground | string;
   readonly backgroundScale?: BackgroundScale;
   readonly globalProps?: any;
   readonly onLoad?: () => void;
   readonly overlaidElements: readonly OverlaidElementInput[];
-  readonly background: OverlayBackground;
 }
 export interface BackgroundScale {
   width?: number;

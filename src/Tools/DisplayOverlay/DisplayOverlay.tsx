@@ -22,8 +22,6 @@ import { VerticalCutOutput, getVerticalMargin } from "./Core/VerticalCrop";
 
 const DisplayOverlay: FC<DisplayOverlayInput> = ({
   background,
-  backgroundImage,
-  backgroundVideo,
   backgroundScale = {
     width: 1920,
     height: 1080,
@@ -102,8 +100,6 @@ const DisplayOverlay: FC<DisplayOverlayInput> = ({
     <div style={verticalMargin.styles}>
       <Background
         background={background}
-        backgroundImage={backgroundImage}
-        backgroundVideo={backgroundVideo}
         backgroundRef={backgroundRef}
         onBackgroundLoad={onBackgroundLoad}
       />
