@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import BookDisplay from "./BookDisplay";
 import { books, BookInfo } from "../books";
 import Background from "../../Background";
-import ContactFooter from "../../ContactFooter";
 import Preview from "./Preview";
 
 const WritingCollection = () => {

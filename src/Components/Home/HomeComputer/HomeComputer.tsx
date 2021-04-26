@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import pic from "../../../Assets/HomeComputerCropped.jpg";
 import DisplayOverlay from "react-display-overlay";
 import { OverlaidElementInput } from "react-display-overlay";
 import sandbookOverlaidImages from "./OverlayImagesInput";
