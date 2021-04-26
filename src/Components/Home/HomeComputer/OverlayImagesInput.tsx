@@ -1,10 +1,10 @@
 import React, { Dispatch, SetStateAction, FC } from "react";
-import { absolutePositionToCSS } from "../../../Tools/DisplayOverlay/PublicTools";
+import { absolutePositionToCSS } from "react-display-overlay";
 import {
   OverlaidElementInput,
   OverlayElementRenderProps,
   AbsolutePositionAndSize,
-} from "../../../Tools/DisplayOverlay/Core/OverlayTypes";
+} from "react-display-overlay";
 import { Link } from "react-router-dom";
 import {
   TerminalIcon,

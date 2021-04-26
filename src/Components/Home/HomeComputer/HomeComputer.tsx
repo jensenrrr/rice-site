@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import pic from "../../../Assets/HomeComputerCropped.jpg";
-import DisplayOverlay from "../../../Tools/DisplayOverlay/DisplayOverlay";
-import { OverlaidElementInput } from "../../../Tools/DisplayOverlay/Core/OverlayTypes";
+import DisplayOverlay from "react-display-overlay";
+import { OverlaidElementInput } from "react-display-overlay";
 import sandbookOverlaidImages from "./OverlayImagesInput";
-
-const vid = "videos/SandbookHighBitRate.mp4";
+import sandbookBackground from "./ComputerBackground";
 
 const HomeComputer = () => {
   const [hovered, setHovered] = useState("");
@@ -20,8 +18,7 @@ const HomeComputer = () => {
   return (
     <div>
       <DisplayOverlay
-        backgroundImage={pic}
-        backgroundVideo={vid}
+        background={sandbookBackground}
         backgroundScale={{
           width: 1920,
           height: 1080,
