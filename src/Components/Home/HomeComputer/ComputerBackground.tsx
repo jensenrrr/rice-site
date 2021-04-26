@@ -1,6 +1,6 @@
 import React from "react";
 import ReactPlayer from "react-player";
-import { OverlayBackgroundRenderProps } from "../../../Tools/DisplayOverlay/Core/OverlayTypes";
+import { OverlayBackgroundRenderProps } from "react-display-overlay";
 
 const vid = "videos/SandbookHighBitRate.mp4";
 

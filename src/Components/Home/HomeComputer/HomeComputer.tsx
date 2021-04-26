@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import pic from "../../../Assets/HomeComputerCropped.jpg";
-import DisplayOverlay from "../../../Tools/DisplayOverlay/DisplayOverlay";
-import { OverlaidElementInput } from "../../../Tools/DisplayOverlay/Core/OverlayTypes";
+import DisplayOverlay from "react-display-overlay";
+import { OverlaidElementInput } from "react-display-overlay";
 import sandbookOverlaidImages from "./OverlayImagesInput";
 import sandbookBackground from "./ComputerBackground";
 
